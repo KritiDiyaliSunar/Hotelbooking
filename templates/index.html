@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -5,11 +7,11 @@
         <meta charset="utf-8">
         <title>Home</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
-        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-        <link rel = "icon" href = "images/logo.png" type = "image/png">
-    </head>
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
+        <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+        <link rel = "icon" href = "{% static 'image/logo.png' %}" type = "image/png">
+    </head>
 
     <body>
         
@@ -27,12 +29,10 @@
             <div class = "head-bottom flex">
                 <h2>A PLACE YOU CAN CALL HOME</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est quos veniam impedit numquam itaque voluptatum, dicta asperiores accusamus, eligendi neque ut incidunt, modi harum molestiae atque natus officia minima.</p>
-            
+       
             </div>
         </header>
         <!-- end of header -->
-
-
 
         <!-- side navbar -->
         <div class = "sidenav" id = "sidenav">
@@ -47,8 +47,8 @@
                 <li><a href = "#customers">reviews</a></li>
             </ul>
 
-            <a href="adminlogin.html" class="btn sign-up">Admin</a>
-            <a href="userlogin.html" class="btn log-in">User</a>
+            <a href="{% url 'adminlogin' %}" class="btn sign-up">Admin</a>
+            <a href="{% url 'userlogin' %}" class="btn log-in">User</a>
 
         </div>
         <!-- end of side navbar -->
@@ -161,7 +161,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/bg.jpg" alt = "room image">
+                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>Deluxe Rooms</h3>
@@ -191,7 +191,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/bg.jpg" alt = "room image">
+                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>Basic Rooms</h3>
@@ -221,7 +221,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/bg.jpg" alt = "room image">
+                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>Deluxe Rooms</h3>
@@ -250,7 +250,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/bg.jpg" alt = "room image">
+                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>Basic Rooms</h3>
@@ -297,11 +297,10 @@
                             <span><i class = "fas fa-star"></i></span>
                             <span><i class = "fas fa-star"></i></span>
                             <span><i class = "far fa-star"></i></span>
-
                         </div>
                         <h3>Servicing was totally awesome!</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat beatae veritatis provident eveniet praesentium veniam cum iusto distinctio esse, vero est autem, eius optio cupiditate?</p>
-                        <img src = "images/loginicon.jpg" alt = "customer image">
+                        <img src = "{% static 'image/loginicon.jpg' %}" alt = "customer image">
                         <span>Customer details</span>
                     </div>
                     <!-- end of single customer -->
@@ -316,7 +315,7 @@
                         </div>
                         <h3>One of the coziest place ever!</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat beatae veritatis provident eveniet praesentium veniam cum iusto distinctio esse, vero est autem, eius optio cupiditate?</p>
-                        <img src = "images/loginicon.jpg" alt = "customer image">
+                        <img src = "{% static 'image/loginicon.jpg' %}" alt = "customer image">
                         <span>Customer details</span>
                     </div>
                     <!-- end of single customer -->
@@ -398,6 +397,6 @@
         </footer>
         <!-- end of footer -->
         
-        <script src="script.js"></script>
+        <script src="{% static 'js/script.js' %}"></script>    
     </body>
 </html>
