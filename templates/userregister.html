@@ -45,11 +45,8 @@
         <!-- end of side navbar -->
 
 
-
-
 <body>
   <div class="logincontainer">
-
 
     <div class="loginsub-container">
       <!-- <div class=" info">
@@ -62,122 +59,59 @@
     </div> -->
 
 
-      <div class="login-form" id="login">
+    <form method="POST" id="register" class="login-form">
       <div class="logintitle">
-      Admin Login Form
+      User Register form
       </div>
+
+      {% csrf_token %}
 
       <div class="input-fields">
       <label class="inputlabel">Username</label>
-      <input id="name1" type="text" class="logininput" required>
-      </div>
-
-      <div class="input-fields">
-      <label  class="inputlabel">Password</label>
-      <input id="pass1" type="password"class="logininput" required>
-      </div>
-        
-      <div class="btn">
-      <a href="#" onclick="login()">Login</a>
-      
-      <a href="#" onclick="toggle()">Register</a></p>
-      </div>
-
-
-    </div>
-
-    <div id="register" class="login-form">
-      <div class="logintitle">
-     Admin Register form
-      </div>
-
-      <div class="input-fields">
-      <label class="inputlabel">Username</label>
-      <input type="text" id="name" class="logininput" required>
+      {{form.username}}
+      <!-- <input type="text" id="name" class="logininput" required> -->
       </div>
 
       <div class="input-fields">
       <label class="inputlabel">Password</label>
-      <input type="password" id="pass" class="logininput" required>
+      {{form.password1}}
+      <!-- <input type="password" id="pass" class="logininput" required> -->
       </div>
 
       <div class="input-fields">
       <label class="inputlabel">Re-Enter Password</label>
-      <input id="repass" type="password"class="logininput" required>
+      {{form.password2}}
+      <!-- <input id="repass" type="password"class="logininput" required> -->
       </div>
         
       <div class="input-fields">
       <label class="inputlabel">Email</label>
-      <input id="email" type="text" class="logininput" required>
+      {{form.email}}
+      <!-- <input id="email" type="text" class="logininput" required> -->
       </div>
 
       <div class="input-fields">
         <label class="inputlabel">Contact</label>
-        <input id="contact" type="number" class="logininput" required>
-        </div>
+        {{form.phone}}
+        <!-- <input id="contact" type="number" class="logininput" required> -->
+      </div>
 
       <div class="btn">
-      <a href="#" onclick="register()">Register</a>
-      <p class="message">Already Registered? <a href="#" onclick="toggle()">Login</a></p>
+      <button type="submit">Register</button>
+      <p class="message">Already Registered? <a href="{% url 'userlogin' %}">Login</a></p>
       </div>
-          
-    </div>
+          {{form.errors}}
+    </form>
 
   </div>
   </div>
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <script type="text/javascript">
-    $('#register').hide()
-    function toggle(){
-      $('#login').toggle()
-      $('#register').toggle()
-    }
-
-
-    function register(){
-      const name = document.getElementById('name').value
-      const pass = document.getElementById('pass').value
-      const repass = document.getElementById('repass').value
-      const email = document.getElementById('email').value
-    if(!localStorage.getItem(name)){
-    if(pass==repass){
-      localStorage.setItem(name,pass)
-      alert('registered!! please login')
-      toggle()
-    }
-    else{
-      alert('password does not match')
-    }
-  }
-  else{
-    alert('user exists')
-    }
-  }
-
-  function login(){
-    const name = document.getElementById('name1').value
-    const pass = document.getElementById('pass1').value
-    if(localStorage.getItem(name))
-    {
-      console.log(name)
-      var x = localStorage.getItem(name)
-
-    if(pass==x){location.href = 'loggedin.html'}
-
-    else{alert('password incorrect')}
-    }
-
-    else{alert('user does not exists')}
-        
-  }
-  </script>
-       <script src="{% static 'js/script.js' %}"></script> 
+  
+    <script src="{% static 'js/script.js' %}"></script> 
 
 </body>
-
 
         <!-- footer -->
         <footer class = "footer">
@@ -236,8 +170,6 @@
             </div>
         </footer>
         <!-- end of footer -->
-
-
 
 
 </html>
