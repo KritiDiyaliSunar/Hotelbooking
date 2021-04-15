@@ -38,13 +38,6 @@ def userlogin(request):
             login(request, user)
             # message.info(request, "You are now logged in as {username}")
             return redirect('index')
-
-        # else:
-        # message.error(request, "Invalid username or password.")
-    # else:
-    #     # message.error(request, "Invalid username or password.")s
-    #     form = AuthenticationForm()
-
     return render(request, 'userlogin.html', {})
 
 
