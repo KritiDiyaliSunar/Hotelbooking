@@ -2,6 +2,11 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+#Django admin cus
+
+admin.site.site_header = "Annapurna Hotel Administrator"
+admin.site.site_title="Welcome to Dashboard"
+admin.site.index_title= "Welcome to Annapurna Hotel Admin Portal"
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -15,3 +20,6 @@ urlpatterns = [
 ]
 
 urlpatterns += staticfiles_urlpatterns()
+
+
+# path set
