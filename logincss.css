@@ -46,6 +46,9 @@ a{
   color: #F2CE1F;
 }
 
+
+
+
 /*--------------------------------home--------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
@@ -66,6 +69,13 @@ html{
 body{
     line-height: 1.6;
 }
+
+.logintitle{
+    color: #F2CE1F;
+    font-size: 30px;
+}
+
+
 .btn1{
     font-size: 16px;
     font-weight: 600;
@@ -236,10 +246,29 @@ h1, h2, h3, h4, h5, h6{
 .navbar li a:hover{
     padding-left: 12px;
 }
-.sign-up, .log-in{
-    background: var(--yellow);
-    color: #fff;
+
+.btn_admin_user{
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 140px;
+    color: black;
+    text-align: center;
+    margin: 15px auto;
+    cursor: pointer;
+    transition: var(--transition);
+    background-color: #F2CE1F;
+    text-decoration-color: red;
 }
+
+.btn_admin_user:hover{
+    opacity: 0.50;
+}
+
+
+
 @media(max-width: 400px){
     .sidenav{
         width: 100vw;
