@@ -64,10 +64,38 @@
                  <h1>Book room</h1>
             </div>
 
+<<<<<<< HEAD
+            {% csrf_token %}
+
+=======
+>>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
             <div class = "book">
                 <form class = "book-form">
                 <div class = "form-item">
                     <label for = "checkin-date">Check In Date: </label>
+<<<<<<< HEAD
+                    <!-- <input type = "date" id = "chekin-date"> -->
+                    {{form.checkin}}
+                </div>
+                <div class = "form-item">
+                    <label for = "checkout-date">Check Out Date: </label>
+                    <!-- <input type = "date" id = "chekout-date"> -->
+                    {{form.checkout}} 
+                </div>
+                <div class = "form-item">
+                    <label for = "adult">Adults: </label>
+                    <!-- <input type = "number" min = "1" value = "1" id = "adult"> -->
+                    {{form.adults}}
+                </div>
+                <div class = "form-item">
+                    <label for = "children">Children: </label>
+                    <!-- <input type = "number" min = "1" value = "1" id = "children"> -->
+                    {{form.children}}
+                </div>
+                <div class = "form-item">
+                    <label for = "rooms">Rooms: </label>
+                    {{form.rooms}}
+=======
                     <input type = "date" id = "chekin-date">
                 </div>
                 <div class = "form-item">
@@ -85,10 +113,15 @@
                 <div class = "form-item">
                     <label for = "rooms">Rooms: </label>
                     <input type = "number" min = "1" value = "1" id = "rooms">
+>>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
                 </div>
                 <div class = "form-item">
                     <input type = "submit" class = "btn" value = "Confirm Booking">
                 </div>
+<<<<<<< HEAD
+                {{form.errors}}
+=======
+>>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
                 </form>
             </div>
         </section>

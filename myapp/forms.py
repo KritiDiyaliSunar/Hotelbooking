@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Booking
 
 
 class LoginForms(AuthenticationForm):
@@ -29,3 +30,20 @@ class RegisterForms(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'phone']
+
+
+class BookingForms(forms.Form):
+    checkin = forms.DateTimeField(
+        widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date', 'id': 'chekin-date'}))
+    checkout = forms.DateTimeField(
+        widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date', 'id': 'chekout-date'}))
+    adults = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'type': 'number', 'id': 'adult'}))
+    children = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'type': 'number', 'id': 'childern'}))
+    # rooms = forms.IntegerField(
+    #     widget=forms.NumberInput(attrs={'type': 'number', 'id': 'rooms'}), required=True)
+
+    class Meta:
+        model = Booking
+        fields = ['checkin', 'checkout', 'adults', 'children', 'rooms']
