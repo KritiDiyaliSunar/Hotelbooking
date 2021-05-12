@@ -1,100 +1,28 @@
-.logincontainer {
-  position: absolute;
-  top: 6%;
-  left: 60%;
-  border-radius: 40px;
-  background-size: 120%;
-}
-.logininput {
-  padding: 10px;
-  padding-left: 20px;
-  width: 95%;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 20px;
-  font-size: 20px;
-  /* color: #f2ce1f; */
-}
-.info {
-  font-family: Roboto Mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  text-align: center;
-  color: #f2ce1f;
-}
-a {
-  padding-bottom: 20%;
-  text-decoration: none;
-  color: black;
-}
-
-.message {
-  text-decoration: none;
-  color: #f2ce1f;
-  word-spacing: 3px;
-  font-style: normal;
-}
-
-.maintitle {
-  font-size: 35px;
-  color: #f2ce1f;
-}
-
-.inputlabel {
-  color: #f2ce1f;
-}
-
-/*--------------------------------home--------------------------------------------*/
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
-
 :root {
   --transition: all 0.7s ease;
-  --yellow: #f9d342;
-  --dark: #292826;
+  --yellow: #f2ce1f;
+  --dark: black;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Playfair Display", serif;
+  /*font-family: 'Times New Roman', serif;*/
 }
+
 html {
   scroll-behavior: smooth;
 }
 body {
   line-height: 1.6;
 }
-
-.logintitle {
-  color: #f2ce1f;
-  font-size: 30px;
-}
-
-.btn1 {
+.btn {
   font-size: 16px;
+  text-transform: uppercase;
   font-weight: 600;
   border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 140px;
-  color: red;
-  text-align: center;
-  margin: 15px auto;
-  cursor: pointer;
-  transition: var(--transition);
-  background-color: #f2ce1f;
-  text-decoration-color: red;
-}
-.btn1:hover {
-  opacity: 0.85;
-}
-
-.btn2 {
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   width: 140px;
   text-decoration: none;
@@ -102,10 +30,9 @@ body {
   margin: 15px auto;
   cursor: pointer;
   transition: var(--transition);
-  background-color: #f2ce1f;
 }
-.btn2:hover {
-  opacity: 0.85;
+.btn:hover {
+  opacity: 0.5;
 }
 .flex {
   display: flex;
@@ -121,7 +48,10 @@ h5,
 h6 {
   padding: 8px 0;
 }
-
+img {
+  width: 100%;
+  display: block;
+}
 @media (max-width: 500px) {
   body {
     font-size: 14px;
@@ -131,14 +61,21 @@ h6 {
 /* header */
 .header {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
-    url("../image/loginbg.jpg") center/cover no-repeat;
-  min-height: 100vh;
-  color: #fff;
+    url("../image/header.jpg") center/cover no-repeat;
+
+  color: #f2ce1f;
   padding: 25px;
   display: flex;
   flex-direction: column;
   align-content: stretch;
 }
+
+.maintitle {
+  font-size: 35px;
+  color: #f2ce1f;
+  text-decoration: none;
+}
+
 .head-top {
   display: flex;
   justify-content: space-between;
@@ -148,10 +85,9 @@ h6 {
   cursor: pointer;
   letter-spacing: 2px;
   transition: var(--transition);
-  color: #f2ce1f;
 }
 .head-top span:hover {
-  color: white;
+  color: var(--yellow);
 }
 .head-bottom {
   flex: 1;
@@ -185,6 +121,36 @@ h6 {
 .head-btn:hover {
   background: transparent;
 }
+
+/*------------------breadcrumbs---------------------*/
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: none;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+  color: white;
+}
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: white;
+  content: "/\00a0";
+}
+ul.breadcrumb li a {
+  color: #f2ce1f;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbdiv {
+  background-color: black;
+}
+/*------------------breadcrumbs end ---------------------*/
+
 @media (max-width: 500px) {
   .head-btn {
     font-size: 17px;
@@ -246,27 +212,11 @@ h6 {
 .navbar li a:hover {
   padding-left: 12px;
 }
-
-.btn_admin_user {
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 140px;
-  color: black;
-  text-align: center;
-  margin: 15px auto;
-  cursor: pointer;
-  transition: var(--transition);
-  background-color: #f2ce1f;
-  text-decoration-color: red;
+.sign-up,
+.log-in {
+  background: var(--yellow);
+  color: #fff;
 }
-
-.btn_admin_user:hover {
-  opacity: 0.5;
-}
-
 @media (max-width: 400px) {
   .sidenav {
     width: 100vw;
@@ -275,13 +225,20 @@ h6 {
 
 /** title */
 .title {
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 30px;
   color: #f2ce1f;
-  border-bottom: 5px solid var(--dark);
+  border-bottom: 5px solid var(--yellow);
   width: 235px;
-  margin: 15px 0;
+  margin: 15px 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #f2ce1f;
+}
+
+h3 {
+  color: #f2ce1f;
 }
 
 .sec-width {
@@ -289,9 +246,145 @@ h6 {
   margin: 0 auto !important;
 }
 
+/* booking form */
+.book {
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+    url("../image/bg.jpg") center/cover no-repeat;
+  color: #fff;
+  padding: 40px 60px;
+}
+.book-form {
+  display: grid;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.book-form input[type="submit"] {
+  margin: 18px 0 0 0;
+  background: var(--dark);
+  color: white;
+  border: 1px solid #f2ce1f;
+}
+.book-form label,
+.book-form input {
+  width: 100%;
+}
+.book-form label {
+  font-weight: 600;
+  word-spacing: 5px;
+  padding-bottom: 8px;
+}
+.book-form input:not(.btn) {
+  margin: 4px 0 16px 0;
+  padding: 12px 15px;
+  border-radius: 20px;
+  font-size: 17px;
+  border: none;
+}
+.book-form input:focus {
+  outline: 0;
+}
+@media (min-width: 768px) {
+  .book-form {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 24px;
+  }
+}
+@media (min-width: 1170px) {
+  .book-form {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1370px) {
+  .book-form {
+    grid-template-columns: 2fr 2fr 1fr 1fr 1fr 2fr;
+  }
+  .book {
+    height: 40vh;
+    display: grid;
+  }
+}
+@media (max-width: 500px) {
+  .book {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* room */
+
+.room_txt_titles {
+  font-size: 20px;
+  color: #f2ce1f;
+}
+
+.rooms {
+  margin: 40px 0;
+  background-color: black;
+}
+.room {
+  /*margin: 45px 0;*/
+  padding-bottom: 25px;
+  background: var(--dark);
+  color: #fff;
+}
+.room-text {
+  padding: 5px 20px;
+}
+.room-text h3 {
+  font-size: 24px;
+}
+.room-text ul {
+  list-style-type: none;
+  margin: 15px 0;
+}
+.room-text ul li {
+  padding: 7px 0;
+}
+.room-text ul li i {
+  color: var(--yellow);
+  margin-right: 10px;
+}
+
+@media (min-width: 900px) {
+  .rooms-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .room {
+    flex: 0 0 calc(50% - 20px);
+    margin: 10px;
+  }
+}
+@media (min-width: 1370px) {
+  .rooms-container {
+    flex-direction: column;
+  }
+  .room {
+    display: flex;
+    padding-bottom: 0;
+    margin: 5px 0;
+  }
+  .room-image {
+    flex: 1;
+  }
+  .room-image img {
+    height: 100%;
+  }
+  .room-text {
+    flex: 1;
+  }
+  .room:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
 /* footer */
 .footer {
-  background-color: black;
+  margin-top: 15px;
+  background: var(--dark);
   color: #f2ce1f;
   text-align: center;
 }
@@ -366,52 +459,4 @@ h6 {
   bottom: 0;
   left: 0;
   z-index: 5;
-}
-
-.registerbtn {
-  font-size: 16px;
-  font-weight: normal;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 140px;
-  color: #f2ce1f;
-  text-align: center;
-  margin: 15px auto;
-  cursor: pointer;
-  transition: var(--transition);
-  text-decoration: underline;
-  /* background-color: transparent; */
-
-  /* margin-left: 150px; */
-  margin-bottom: 30px;
-}
-
-.registerbtn:hover {
-  opacity: 0.85;
-}
-
-.loginbtn {
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  width: 140px;
-  color: black;
-  text-align: center;
-  margin: 15px auto;
-  cursor: pointer;
-  transition: var(--transition);
-  background-color: #f2ce1f;
-  /* text-decoration: underline; */
-  /* margin-left: px; */
-}
-
-.loginbtn:hover {
-  opacity: 0.85;
-}
-
-.registermessage {
-  color: #f2ce1f;
 }

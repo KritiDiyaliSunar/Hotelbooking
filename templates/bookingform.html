@@ -5,10 +5,9 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Home</title>
+        <title>Booking form</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bookingform.css' %}">
         <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
         <link rel = "icon" href = "{% static 'image/logo.png' %}" type = "image/png">
     </head>
@@ -19,14 +18,24 @@
         <header class = "header" id = "header">
             <div class = "head-top">
                 <div class = "site-name">
-                    <a href="{% url 'index' %}" class="maintitle">HOTEL ANNAPURNA</a>
+                   <a href="{% url 'index' %}" class="maintitle">HOTEL ANNAPURNA</a>
                 </div>
+
                 <div class = "site-nav">
                     <span id = "nav-btn">MENU <i class = "fas fa-bars"></i></span>
                 </div>
             </div>
         </header>
         <!-- end of header -->
+
+            <div class="breadcrumbdiv">
+            <ul class="breadcrumb">
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'room' %}">Rooms</a></li>
+              <li><a href="{% url 'roomdetail' %}">Room detail</a></li>
+              <li>Booking form</li>
+            </ul>
+            </div>
 
         <!-- side navbar -->
         <div class = "sidenav" id = "sidenav">
@@ -35,55 +44,55 @@
             </span>
 
             <ul class = "navbar">
-                <li><a href = "{% url 'index' %}">back to home</a></li>
+                <li><a href = "{% url 'index' %}">home</a></li>
+                <li><a href = "{% url 'room' %}">booking form</a></li>
+
             </ul>
-
             <a href="{% url 'admin:index' %}" class="btn sign-up">Admin</a>
-            <a href="#" class="btn log-in">User</a>
-
+            <a href="{% url 'userlogin' %}" class="btn log-in">User</a>
+            <a href="{% url 'userlogout' %}" class="btn log-in">Logout</a>
         </div>
         <!-- end of side navbar -->
-<body>
 
-  <div class="logincontainer">
+        <!-- fullscreen modal -->
+        <div id = "modal"></div>
+        <!-- end of fullscreen modal -->
 
-    <div class="loginsub-container">
+        <!-- body content  -->
+        <section class = "rooms sec-width" id = "rooms">
+            <div class = "title">
+                 <h1>Book room</h1>
+            </div>
 
-      <form method="POST" class ="login-form" id="login">
-      <div class="logintitle">
-      User Login Form
-      </div>
-
-      {% csrf_token %}
-
-      <div class="input-fields">
-      <label class="inputlabel">Username</label>
-      <!-- {{form.username}}+ -->
-      <input id="name1" name="username" type="text" class="logininput" required>
-      </div>
-
-      <div class="input-fields">
-      <label  class="inputlabel">Password</label>
-      <!-- {{form.password}} -->
-      <input id="pass1" name="password" type="password"class="logininput" required>
-      </div>
-        
-      <div class="btn">
-        <button type="submit" class=" loginbtn">Login</button>
-      
-      <a href="{% url 'userregister' %}" class="registerbtn">Register</a></p>
-      </div>
-      <div>
-        {{form.errors}}
-      </div>
-    </form>
-
-  </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <script src="{% static 'js/script.js' %}"></script> 
+            <div class = "book">
+                <form class = "book-form">
+                <div class = "form-item">
+                    <label for = "checkin-date">Check In Date: </label>
+                    <input type = "date" id = "chekin-date">
+                </div>
+                <div class = "form-item">
+                    <label for = "checkout-date">Check Out Date: </label>
+                    <input type = "date" id = "chekout-date">
+                </div>
+                <div class = "form-item">
+                    <label for = "adult">Adults: </label>
+                    <input type = "number" min = "1" value = "1" id = "adult">
+                </div>
+                <div class = "form-item">
+                    <label for = "children">Children: </label>
+                    <input type = "number" min = "1" value = "1" id = "children">
+                </div>
+                <div class = "form-item">
+                    <label for = "rooms">Rooms: </label>
+                    <input type = "number" min = "1" value = "1" id = "rooms">
+                </div>
+                <div class = "form-item">
+                    <input type = "submit" class = "btn" value = "Confirm Booking">
+                </div>
+                </form>
+            </div>
+        </section>
+        <!-- end of body content  -->
 
         <!-- footer -->
         <footer class = "footer">
@@ -96,7 +105,7 @@
                            <a href="https://twitter.com/?lang=en"> <i class = "fa fa-twitter fa-2x"></i></a>
                         </li>
                         <li class = "flex">
-                          <a href="https://www.facebook.com/"> <i class = "fa fa-facebook fa-2x"></i></a>
+                          <a href="https://www.facebook.com/Hotel-Annapurna-103362718588167"> <i class = "fa fa-facebook fa-2x"></i></a>
                         </li>
                         <li class = "flex">
                             <a href="https://www.instagram.com/"><i class = "fa fa-instagram fa-2x"></i></a>
@@ -135,6 +144,7 @@
             </div>
         </footer>
         <!-- end of footer -->
-
-</body>
+        
+        <script src="{% static 'js/script.js' %}"></script>    
+    </body>
 </html>

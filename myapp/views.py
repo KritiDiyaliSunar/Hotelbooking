@@ -44,3 +44,15 @@ def userlogin(request):
 def userlogout(request):
     logout(request)
     return redirect('userlogin')
+
+
+def room(request):
+    return render(request, 'room.html')
+
+
+def roomdetail(request):
+    return render(request, 'roomdetail.html')
+
+
+def bookingform(request):
+    return render(request, 'bookingform.html')

@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -19,7 +19,7 @@
         <header class = "header" id = "header">
             <div class = "head-top">
                 <div class = "site-name">
-                    <span>HOTEL ANNAPURNA</span>
+                    <span class="logo">HOTEL ANNAPURNA</span>
                 </div>
                 <div class = "site-nav">
                     <span id = "nav-btn">MENU <i class = "fas fa-bars"></i></span>
@@ -41,20 +41,18 @@
             </span>
 
             <ul class = "navbar">
-                <li><a href = "index.html">home</a></li>
+                <li><a href = "{% url 'index' %}">home</a></li>
                 <li><a href = "#services">services</a></li>
                 <li><a href = "#rooms">rooms</a></li>
                 <li><a href = "#customers">reviews</a></li>
             </ul>
 
-            <a href="{% url 'adminlogin' %}" class="btn sign-up">Admin</a>
+            <a href="{% url 'admin:index' %}" class="btn sign-up">Admin</a>
             <a href="{% url 'userlogin' %}" class="btn log-in">User</a>
             <a href="{% url 'userlogout' %}" class="btn log-in">Logout</a>
 
         </div>
         <!-- end of side navbar -->
-
-
 
         <!-- fullscreen modal -->
         <div id = "modal"></div>
@@ -126,37 +124,9 @@
             </div>
         </section>
 
-        <div class = "book">
-            <form class = "book-form">
-                <div class = "form-item">
-                    <label for = "checkin-date">Check In Date: </label>
-                    <input type = "date" id = "chekin-date">
-                </div>
-                <div class = "form-item">
-                    <label for = "checkout-date">Check Out Date: </label>
-                    <input type = "date" id = "chekout-date">
-                </div>
-                <div class = "form-item">
-                    <label for = "adult">Adults: </label>
-                    <input type = "number" min = "1" value = "1" id = "adult">
-                </div>
-                <div class = "form-item">
-                    <label for = "children">Children: </label>
-                    <input type = "number" min = "1" value = "1" id = "children">
-                </div>
-                <div class = "form-item">
-                    <label for = "rooms">Rooms: </label>
-                    <input type = "number" min = "1" value = "1" id = "rooms">
-                </div>
-                <div class = "form-item">
-                    <input type = "submit" class = "btn" value = "Check Avaibility">
-                </div>
-            </form>
-        </div>
-
         <section class = "rooms sec-width" id = "rooms">
             <div class = "title">
-                <h1>rooms</h1>
+                <a href="room.html" class="roomtitle"></a> <h1>rooms</h1>
             </div>
             <div class = "rooms-container">
                 <!-- single room -->
@@ -166,123 +136,33 @@
                     </div>
                     <div class = "room-text">
                         <h3>Deluxe Rooms</h3>
-                        <ul>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                        </ul>
+                        <p class = "rate">
+                            <span>Rs.1500 /</span> Per Night
+                        </p>
+                        <a href="{% url 'room' %}"> <button type = "button" class = "btn">More detail</button></a>
+                    </div>    
+                </article>
+                <!-- end of single room -->
+
+                <!-- single room -->
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                        <h3>Basic Rooms</h3>
                         
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus exercitationem repellendus maxime ullam tempore architecto provident unde expedita quam beatae, dolore eligendi molestias sint tenetur incidunt voluptas. Unde corporis qui iusto vitae. Aut nesciunt id iste, cum esse commodi nemo?</p>
-                        <p class = "rate">
-                            <span>Rs.1500 /</span> Per Night
-                        </p>
-                        <button type = "button" class = "btn">book now</button>
-                    </div>
-                </article>
-                <!-- end of single room -->
-                <!-- single room -->
-                <article class = "room">
-                    <div class = "room-image">
-                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
-                    </div>
-                    <div class = "room-text">
-                        <h3>Basic Rooms</h3>
-                        <ul>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus exercitationem repellendus maxime ullam tempore architecto provident unde expedita quam beatae, dolore eligendi molestias sint tenetur incidunt voluptas. Unde corporis qui iusto vitae. Aut nesciunt id iste, cum esse commodi nemo?</p>
                         <p class = "rate">
                             <span>Rs.1000 /</span> Per Night
                         </p>
-                        <button type = "button" class = "btn">book now</button>
-                    </div>
+                        <a href="{% url 'room' %}"> <button type = "button" class = "btn">More detail</button></a>
+                        </div>
                 </article>
                 <!-- end of single room -->
-
-                <!-- single room -->
-                <article class = "room">
-                    <div class = "room-image">
-                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
-                    </div>
-                    <div class = "room-text">
-                        <h3>Deluxe Rooms</h3>
-                        <ul>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus exercitationem repellendus maxime ullam tempore architecto provident unde expedita quam beatae, dolore eligendi molestias sint tenetur incidunt voluptas. Unde corporis qui iusto vitae. Aut nesciunt id iste, cum esse commodi nemo?</p>
-                        <p class = "rate">
-                            <span>Rs.1500 /</span> Per Night
-                        </p>
-                        <button type = "button" class = "btn">book now</button>
-                    </div>
-                </article>
-                <!-- end of single room -->
-                <!-- single room -->
-                <article class = "room">
-                    <div class = "room-image">
-                        <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
-                    </div>
-                    <div class = "room-text">
-                        <h3>Basic Rooms</h3>
-                        <ul>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                            <li>
-                                <i class = "fas fa-arrow-alt-circle-right"></i>
-                                Lorem ipsum dolor sit amet.
-                            </li>
-                        </ul>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus exercitationem repellendus maxime ullam tempore architecto provident unde expedita quam beatae, dolore eligendi molestias sint tenetur incidunt voluptas. Unde corporis qui iusto vitae. Aut nesciunt id iste, cum esse commodi nemo?</p>
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corporis quasi officiis cumque, fugiat nostrum sunt, tempora animi dicta laborum beatae ratione doloremque. Delectus odio sit eius labore, atque quo?</p> -->
-                        <p class = "rate">
-                            <span>Rs.1000 /</span> Per Night
-                        </p>
-                        <button type = "button" class = "btn">book now</button>
-                    </div>
-                </article>
-                <!-- end of single room -->
-
+                <a href="{% url 'room' %}"> <button type = "button" class = "moreroom">Load more room</button></a>
 
             </div>
         </section>
-
 
         <section class = "customers" id = "customers">
             <div class = "sec-width">
@@ -319,22 +199,6 @@
                         <img src = "{% static 'image/loginicon.jpg' %}" alt = "customer image">
                         <span>Customer details</span>
                     </div>
-                    <!-- end of single customer -->
-                    <!-- single customer -->
-                    <!-- <div class = "customer">
-                        <div class = "rating">
-                            <span><i class = "fas fa-star"></i></span>
-                            <span><i class = "fas fa-star"></i></span>
-                            <span><i class = "fas fa-star"></i></span>
-                            <span><i class = "fas fa-star"></i></span>
-                            <span><i class = "far fa-star"></i></span>
-                        </div>
-                        <h3>Cool! Absolutely Loved it!</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat beatae veritatis provident eveniet praesentium veniam cum iusto distinctio esse, vero est autem, eius optio cupiditate?</p>
-                        <img src = "images/loginicon.jpg" alt = "customer image">
-                        <span>Customer Name, Country</span>
-                    </div> -->
-                    <!-- end of single customer -->
                 </div>
             </div>
         </section>
@@ -357,13 +221,6 @@
                             <a href="https://www.instagram.com/"><i class = "fa fa-instagram fa-2x"></i></a>
                         </li>
                     </ul>
-                </div>
-
-                <div>
-                    <h2>Useful Links</h2>
-                    <a href = "https://www.flickr.com/photos/tags/flicker/">Gallery</a>
-                    <a href = "#">Subscription Offers</a>
-                    <a href = "#">Gift Cards</a>
                 </div>
 
                 <div>
