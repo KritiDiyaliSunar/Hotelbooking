@@ -73,12 +73,14 @@
             <div class = "rooms-container">
           
                 <!-------- single room ---------->
+                {% for room in rooms  %}
                 <article class = "room">
                     <div class = "room-image">
                         <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
                     <div class = "room-text">
-                        <h3>Basic Rooms</h3>
+                        <!-- <h3>Basic Rooms</h3> -->
+                        {{room.name}}
                         <ul>
                             <li>
                                 <i class = "fas fa-arrow-alt-circle-right"></i>
@@ -95,16 +97,17 @@
                         </ul>
 
                         <p class = "rate">
-                            <span>Rs.1000 /</span> Per Night
+                            <span>{{room.price}} /</span> Per Night
                         </p>
-                        <a href="{% url 'roomdetail' %}"> <button type = "button" class = "btn">More detail</button></a>
+                        <a href="{% url 'roomdetail' room.id %}"> <button type = "button" class = "btn">More detail</button></a>
                     </div>
                 </article>
+                {% endfor %}
                 <!----------- end of single room -------------->
 
 
                 <!-------- single room ---------->
-                <article class = "room">
+                <!-- <article class = "room">
                     <div class = "room-image">
                         <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
@@ -128,14 +131,13 @@
                         <p class = "rate">
                             <span>Rs.1000 /</span> Per Night
                         </p>
-                        <a href="{% url 'roomdetail' %}"> <button type = "button" class = "btn">More detail</button></a>
                     </div>
-                </article>
+                </article> -->
                 <!----------- end of single room -------------->
 
 
                 <!-------- single room ---------->
-                <article class = "room">
+                <!-- <article class = "room">
                     <div class = "room-image">
                         <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
@@ -159,14 +161,13 @@
                         <p class = "rate">
                             <span>Rs.1000 /</span> Per Night
                         </p>
-                        <a href="{% url 'roomdetail' %}"> <button type = "button" class = "btn">More detail</button></a>
                     </div>
-                </article>
+                </article> -->
                 <!----------- end of single room -------------->
 
 
                 <!-------- single room ---------->
-                <article class = "room">
+                <!-- <article class = "room">
                     <div class = "room-image">
                         <img src = "{% static 'image/bg.jpg' %}" alt = "room image">
                     </div>
@@ -190,9 +191,8 @@
                         <p class = "rate">
                             <span>Rs.1000 /</span> Per Night
                         </p>
-                        <a href="{% url 'roomdetail' %}"> <button type = "button" class = "btn">More detail</button></a>
                     </div>
-                </article>
+                </article> -->
                 <!----------- end of single room -------------->
 
             </div>
@@ -249,6 +249,9 @@
         </footer>
         <!-- end of footer -->
         
-        <script src="{% static 'js/script.js' %}"></script>    
+        <script src="{% static 'js/script.js' %}"></script>  
+        <!-- <script>
+            
+        </script>   -->
     </body>
 </html>

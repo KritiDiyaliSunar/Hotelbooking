@@ -77,7 +77,8 @@
                     </div>
 
                     <div class = "room-text">
-                        <h3>Deluxe Rooms</h3>
+                        <!-- <h3>Deluxe Rooms</h3> -->
+                        <h3>{{room.name}}</h3>
                         <br>
                         <div class="room_txt_titles"> Features: </div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus exercitationem repellendus maxime ullam tempore architecto provident unde expedita quam beatae, dolore eligendi molestias sint tenetur incidunt voluptas. Unde corporis qui iusto vitae. Aut nesciunt id iste, cum esse commodi nemo?</p>
@@ -105,9 +106,9 @@
 
                         <br>
                         <p class = "rate">
-                            <span>Rs.1500 /</span> Per Night
+                            <span>{{room.price}} /</span> Per Night
                         </p>
-                        <a href="{% url 'bookingform' %}"> <button type = "button" class = "btn">book now</button> </a>
+                        <a href="{% url 'bookingform' room.id %}"> <button type = "button" class = "btn">book now</button> </a>
                     </div>
                 </article>
                 <!-- end of single room -->

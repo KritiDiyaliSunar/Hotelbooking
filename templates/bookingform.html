@@ -32,7 +32,7 @@
             <ul class="breadcrumb">
               <li><a href="{% url 'index' %}">Home</a></li>
               <li><a href="{% url 'room' %}">Rooms</a></li>
-              <li><a href="{% url 'roomdetail' %}">Room detail</a></li>
+              <li><a href="{% url 'roomdetail' id %}">Room detail</a></li>
               <li>Booking form</li>
             </ul>
             </div>
@@ -64,16 +64,12 @@
                  <h1>Book room</h1>
             </div>
 
-<<<<<<< HEAD
-            {% csrf_token %}
-
-=======
->>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
+            
             <div class = "book">
-                <form class = "book-form">
-                <div class = "form-item">
+                <form class = "book-form" method="POST">
+                    {% csrf_token %}
+                    <div class = "form-item">
                     <label for = "checkin-date">Check In Date: </label>
-<<<<<<< HEAD
                     <!-- <input type = "date" id = "chekin-date"> -->
                     {{form.checkin}}
                 </div>
@@ -95,33 +91,11 @@
                 <div class = "form-item">
                     <label for = "rooms">Rooms: </label>
                     {{form.rooms}}
-=======
-                    <input type = "date" id = "chekin-date">
-                </div>
-                <div class = "form-item">
-                    <label for = "checkout-date">Check Out Date: </label>
-                    <input type = "date" id = "chekout-date">
-                </div>
-                <div class = "form-item">
-                    <label for = "adult">Adults: </label>
-                    <input type = "number" min = "1" value = "1" id = "adult">
-                </div>
-                <div class = "form-item">
-                    <label for = "children">Children: </label>
-                    <input type = "number" min = "1" value = "1" id = "children">
-                </div>
-                <div class = "form-item">
-                    <label for = "rooms">Rooms: </label>
-                    <input type = "number" min = "1" value = "1" id = "rooms">
->>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
                 </div>
                 <div class = "form-item">
                     <input type = "submit" class = "btn" value = "Confirm Booking">
                 </div>
-<<<<<<< HEAD
                 {{form.errors}}
-=======
->>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
                 </form>
             </div>
         </section>

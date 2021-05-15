@@ -1,0 +1,29 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+  </head>
+  <body>
+    <h1>
+      <ul>
+        <li style="color: black">Check In : {{booking.room.name}}</li>
+        <li style="color: black">Check In : {{booking.checkin}}</li>
+        <li style="color: black">Check Out : {{booking.checkout}}</li>
+        <li style="color: black">Adults : {{booking.adults}}</li>
+        <li style="color: black">Children : {{booking.children}}</li>
+        <li style="color: black">Rooms : {{booking.rooms}}</li>
+        <li style="color: black">
+          Total price : Rs. {% widthratio booking.room.price 1 booking.rooms %}
+        </li>
+        <em>Booked by: {{booking.user.username}}</em>
+      </ul>
+    </h1>
+    <a href="{% url 'cancelbooking' booking.id %}" class="loginbtn">Cancel</a>
+  </body>
+</html>

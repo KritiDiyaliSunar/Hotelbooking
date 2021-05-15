@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django import forms
 from .models import Booking
+import datetime
 
 
 class LoginForms(AuthenticationForm):
@@ -33,16 +34,17 @@ class RegisterForms(UserCreationForm):
 
 
 class BookingForms(forms.Form):
-    checkin = forms.DateTimeField(
-        widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date', 'id': 'chekin-date'}))
-    checkout = forms.DateTimeField(
-        widget=forms.DateInput(format='%Y-%m-%d', attrs={'type': 'date', 'id': 'chekout-date'}))
-    adults = forms.IntegerField(
-        widget=forms.NumberInput(attrs={'type': 'number', 'id': 'adult'}))
-    children = forms.IntegerField(
-        widget=forms.NumberInput(attrs={'type': 'number', 'id': 'childern'}))
-    # rooms = forms.IntegerField(
-    #     widget=forms.NumberInput(attrs={'type': 'number', 'id': 'rooms'}), required=True)
+
+    checkin = forms.DateField(initial=datetime.date.today(), widget=forms.DateInput(
+        attrs={'id': 'chekin-date', "type": "date"}))
+    checkout = forms.DateField(initial=datetime.date.today(
+    ),  widget=forms.DateInput(attrs={'id': 'chekout-date', "type": "date"}))
+    adults = forms.IntegerField(initial=1,
+                                widget=forms.NumberInput(attrs={'id': 'adult', "min": 1, }))
+    children = forms.IntegerField(initial=1,
+                                  widget=forms.NumberInput(attrs={'id': 'childern', "min": 1, }))
+    # rooms = forms.IntegerField(initial=1,
+    #                            widget=forms.NumberInput(attrs={'id': 'rooms', "min": 1, "max": 100}), required=True)
 
     class Meta:
         model = Booking

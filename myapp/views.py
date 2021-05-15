@@ -3,7 +3,8 @@ from .forms import RegisterForms, LoginForms, BookingForms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-
+import datetime
+from django import forms
 from .models import Room, Booking
 from django.contrib import messages
 from django.views.generic import ListView
@@ -62,14 +63,15 @@ def userlogout(request):
 
 
 def room(request):
-    return render(request, 'room.html')
+    rooms = Room.objects.all()
+    return render(request, 'room.html', {"rooms": rooms})
 
 
-def roomdetail(request):
-    return render(request, 'roomdetail.html')
+def roomdetail(request, id):
+    room = Room.objects.get(pk=id)
+    return render(request, 'roomdetail.html', {"room": room})
 
 
-<<<<<<< HEAD
 # def bookingform(request):
 #     return render(request, 'bookingform.html')
 
@@ -81,38 +83,45 @@ class BookingList(ListView):
     model = Booking
 
 
-def bookingform(request):
-    if request.method == "POST":
-        form = BookingForms(request.POST)
-        # room_list = Room.objects.filter()
-        # for room in room_list:
-        #     if check_availability(room, data['checkin'], data['checkout']):
-        #         # form.save()
-        #         # return redirect('index')
-        #         if len(available_rooms) > 0:
-        room = available_rooms[0]
-        booking = Booking.objects.create(
-            user=request.user,
-            room=room,
-            checkin=data['checkin'],
-            checkout=data['checkout'],
-            adults=data['adults'],
-            children=data['children'],
-            rooms=data['rooms']
-        )
-        booking.save()
-        return HttpResponse(booking)
-        # else:
-        #     return HttpResponse('This cagaytau are booked')
+def bookingform(request, id):
+    room = Room.objects.get(pk=id)
+    if room.available_rooms > 0:
+        if request.method == "POST":
+            room = Room.objects.get(pk=id)
+            booking = Booking.objects.create(
+                user=request.user,
+                room=room,
+                checkin=request.POST['checkin'],
+                checkout=request.POST['checkout'],
+                adults=request.POST['adults'],
+                children=request.POST['children'],
+                rooms=request.POST['rooms'],
+            )
+            booking.save()
+            room.available_rooms -= int(request.POST['rooms'])
+            room.save()
+            return redirect(bookingdetail, booking.id)
+        else:
+            room = Room.objects.get(pk=id)
+            form = BookingForms()
+            form.fields['rooms'] = forms.IntegerField(
+                widget=forms.NumberInput(attrs={'id': 'rooms', "min": 1, "max": room.available_rooms}), required=True)
 
-        # else:
-        #     messages.error(request, "Error")
-
+        return render(request, 'bookingform.html', {'form': form, "id": id})
     else:
-        form = BookingForms()
+        return render(request, 'notavailable.html', {"room": room})
 
-    return render(request, 'bookingform.html', {'form': form})
-=======
-def bookingform(request):
-    return render(request, 'bookingform.html')
->>>>>>> 916e4089e013e55e28d43147551663f02fc8e942
+
+def bookingdetail(request, id):
+    booking = Booking.objects.get(pk=id)
+
+    return render(request, 'bookingdetail.html', {'booking': booking})
+
+
+def cancelBooking(request, id):
+    booking = Booking.objects.get(pk=id)
+    room = Room.objects.get(pk=booking.room.id)
+    room.available_rooms += booking.rooms
+    room.save()
+    booking.delete()
+    return redirect(index)
